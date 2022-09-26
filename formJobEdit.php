@@ -25,27 +25,43 @@ include_once("header.php");
 
 $idUserEdit = $_GET['idEdit'];
 
-$result = Jobs::getOne($idUserEdit);
+$results = Jobs::getOne($idUserEdit);
 
-echo "get result successfully";
+//Assign value into fields
+$count =  0;
+foreach($results as $result){
+  if($count == 0){
+  $_POST["txtTitle"] = $result['title'];
+  $_POST["txtCompany"] = $result['companyName'];
+  $_POST["txtDescription"]= $result['companyName'];
+  $_POST["txtStartDate"] = $result["startDate"];
+  $_POST["txtEndDate"] = $result["endDate"];
+  $_POST["txtStack"] = $result["idStack"];
+  $_POST["txtId"] = $result["ID"];
+  }else{
+    break;
+  }
+}
 
-// if (isset($_POST["btnSubmit"])) {
-//   $jobTitle = $_POST["txtTitle"];
-//   $jobCompany = $_POST["txtCompany"];
-//   $jobDescription = $_POST["txtDescription"];
-//   $jobStartDate = $_POST["txtStartDate"];
-//   $jobEndDate = $_POST["txtEndDate"];
-//   $jobStack = $_POST["txtStack"];
-//   $newJob = new Jobs($jobTitle, $jobCompany, $jobDescription, $jobStartDate, $jobEndDate, $jobStack);
-//   $result = $newJob->save();
+if (isset($_POST["btnSubmit"])) {
+  $id = $_POST["txtId"];
+  $jobTitle = $_POST["txtTitle"];
+  $jobCompany = $_POST["txtCompany"];
+  $jobDescription = $_POST["txtDescription"];
+  $jobStartDate = $_POST["txtStartDate"];
+  $jobEndDate = $_POST["txtEndDate"];
+  $jobStack = $_POST["txtStack"];
+  $result = Jobs::update($id,$jobTitle, $jobCompany, $jobDescription, $jobStartDate, $jobEndDate, $jobStack);
+  echo $result;
 
-//   //Failure catching
-//   if (!$result) {
-//     header("Location: add_product.php?failure");
-//   } {
-//     header("Location: listJobs.php");
-//   }
-//}
+  //Failure catching
+  if (!$result) {
+    header("Location: add_product.php?failure");
+  } {
+    echo "<script>alert('Data Updated Successfully')".$result.";</script>";
+    //header("Location: listJobs.php");
+  }
+}
 ?>
 
 <body>
@@ -54,6 +70,9 @@ echo "get result successfully";
       <form method="post" style="min-width: 300px;">
         <h5 class="text-center">Add new job</h5>
 
+        <div class="form-group">
+          <input class="form-control" name="txtId" value="<?php echo isset($_POST["txtId"]) ? $_POST["txtId"] : ""; ?>" type="text" placeholder="ID" hidden />
+        </div>
         <div class="form-group">
           <input class="form-control" name="txtTitle" value="<?php echo isset($_POST["txtTitle"]) ? $_POST["txtTitle"] : ""; ?>" type="text" placeholder="Job Title" />
         </div>
@@ -74,7 +93,7 @@ echo "get result successfully";
         </div>
 
         <div class="form-group">
-          <input class="form-control" name="txtStack" value="<?php echo isset($_POST["txtEndDate"]) ? $_POST["txtEndDate"] : ""; ?>" type="text" placeholder="Tech Stack" />
+          <input class="form-control" name="txtStack" value="<?php echo isset($_POST["txtStack"]) ? $_POST["txtStack"] : ""; ?>" type="text" placeholder="Tech Stack" />
         </div>
 
         <div class="form-group">

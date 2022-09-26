@@ -67,7 +67,19 @@ class Jobs
         $db = new DB();
         $id = intval($id);
 
-        $sql = "SELECT `ID`, `title`, `companyName`, `description`, `startDate`, `endDate`, `techStack`, `idUser` FROM `jobs` WHERE ID ='" . $id . "'";
+        $sql = "SELECT `ID`, `title`, `companyName`, `description`, `startDate`, `endDate`, `idStack`, `idUser` FROM `jobs` WHERE ID ='" . $id . "'";
+
+        $result = $db->query_execute($sql);
+        return $result;
+    }
+
+    public static function update($id, $title, $companyName, $description, $startDate, $endDate, $idStack){
+        $db = new DB();
+        $id = intval($id);
+        $idUser = "1";
+
+        $sql = "UPDATE `jobs` SET `title`='".$title."',`companyName`='".$companyName."',`description`='".$description."
+        ',`startDate`='".$startDate."',`endDate`='".$endDate."',`idUser`='".$idUser."',`idStack`='".$idStack."' WHERE ID ='".$id."'";
 
         $result = $db->query_execute($sql);
         return $result;
