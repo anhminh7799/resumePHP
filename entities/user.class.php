@@ -31,11 +31,22 @@ class Users
         $this->website = NULL;
     }
 
-    public static function list_users() {
-    $db = new Db();
-    $sql = "SELECT * FROM users";
-    $result = $db->select_to_array($sql);
-    return $result;
-  }
+    public static function list_users()
+    {
+        $db = new Db();
+        $sql = "SELECT * FROM users";
+        $result = $db->select_to_array($sql);
+        return $result;
+    }
 
+    public static function getOne($id)
+    {
+        $db = new DB();
+        $id = intval("1");
+
+        $sql = "SELECT * FROM `users` WHERE ID ='" . $id . "'";
+
+        $result = $db->query_execute($sql);
+        return $result;
+    }
 }

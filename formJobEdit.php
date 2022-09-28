@@ -29,37 +29,38 @@ $results = Jobs::getOne($idUserEdit);
 
 //Assign value into fields
 $count =  0;
-foreach($results as $result){
-  if($count == 0){
-  $_POST["txtTitle"] = $result['title'];
-  $_POST["txtCompany"] = $result['companyName'];
-  $_POST["txtDescription"]= $result['companyName'];
-  $_POST["txtStartDate"] = $result["startDate"];
-  $_POST["txtEndDate"] = $result["endDate"];
-  $_POST["txtStack"] = $result["idStack"];
-  $_POST["txtId"] = $result["ID"];
-  }else{
+foreach ($results as $result) {
+  if ($count == 0) {
+    $_POST["txtTitle"] = $result['title'];
+    $_POST["txtCompany"] = $result['companyName'];
+    $_POST["txtDescription"] = $result['companyName'];
+    $_POST["txtStartDate"] = $result["startDate"];
+    $_POST["txtEndDate"] = $result["endDate"];
+    $_POST["txtStack"] = $result["idStack"];
+    $_POST["txtId"] = $result["ID"];
+    $count++;
+  } else {
     break;
   }
 }
 
 if (isset($_POST["btnSubmit"])) {
-  $id = $_POST["txtId"];
-  $jobTitle = $_POST["txtTitle"];
-  $jobCompany = $_POST["txtCompany"];
-  $jobDescription = $_POST["txtDescription"];
-  $jobStartDate = $_POST["txtStartDate"];
-  $jobEndDate = $_POST["txtEndDate"];
-  $jobStack = $_POST["txtStack"];
-  $result = Jobs::update($id,$jobTitle, $jobCompany, $jobDescription, $jobStartDate, $jobEndDate, $jobStack);
-  echo $result;
+  $id = $_POST["txtIdNew"];
+  $jobTitle = $_POST["txtTitleNew"];
+  $jobCompany = $_POST["txtCompanyNew"];
+  $jobDescription = $_POST["txtDescriptionNew"];
+  $jobStartDate = $_POST["txtStartDateNew"];
+  $jobEndDate = $_POST["txtEndDateNew"];
+  $jobStack = $_POST["txtStackNew"];
+  echo $id . ";" . $jobTitle . ";" . $jobCompany . ";" . $jobDescription . ";" . $jobStartDate . ";" . $jobEndDate . ";" . $jobStack;
+  $resultUpdate = Jobs::update($id, $jobTitle, $jobCompany, $jobDescription, $jobStartDate, $jobEndDate, $jobStack);
+  //echo $resultUpdate;
 
   //Failure catching
-  if (!$result) {
+  if (!$resultUpdate) {
     header("Location: add_product.php?failure");
   } {
-    echo "<script>alert('Data Updated Successfully')".$result.";</script>";
-    //header("Location: listJobs.php");
+    header("Location: listJobs.php");
   }
 }
 ?>
@@ -71,29 +72,29 @@ if (isset($_POST["btnSubmit"])) {
         <h5 class="text-center">Add new job</h5>
 
         <div class="form-group">
-          <input class="form-control" name="txtId" value="<?php echo isset($_POST["txtId"]) ? $_POST["txtId"] : ""; ?>" type="text" placeholder="ID" hidden />
+          <input class="form-control" name="txtIdNew" value="<?php echo isset($_POST["txtId"]) ? $_POST["txtId"] : ""; ?>" type="text" placeholder="ID" hidden />
         </div>
         <div class="form-group">
-          <input class="form-control" name="txtTitle" value="<?php echo isset($_POST["txtTitle"]) ? $_POST["txtTitle"] : ""; ?>" type="text" placeholder="Job Title" />
-        </div>
-
-        <div class="form-group">
-          <input class="form-control" name="txtCompany" value="<?php echo isset($_POST["txtCompany"]) ? $_POST["txtCompany"] : ""; ?>" type="text" placeholder="Company Name" />
+          <input class="form-control" name="txtTitleNew" value="<?php echo isset($_POST["txtTitle"]) ? $_POST["txtTitle"] : ""; ?>" type="text" placeholder="Job Title" />
         </div>
 
         <div class="form-group">
-          <input class="form-control" name="txtDescription" value="<?php echo isset($_POST["txtDescription"]) ? $_POST["txtDescription"] : ""; ?>" type="text" placeholder="Description" />
+          <input class="form-control" name="txtCompanyNew" value="<?php echo isset($_POST["txtCompany"]) ? $_POST["txtCompany"] : ""; ?>" type="text" placeholder="Company Name" />
         </div>
 
         <div class="form-group">
-          <input class="form-control" name="txtStartDate" value="<?php echo isset($_POST["txtStartDate"]) ? $_POST["txtStartDate"] : ""; ?>" type="date" placeholder="Start Date" />
-        </div>
-        <div class="form-group">
-          <input class="form-control" name="txtEndDate" value="<?php echo isset($_POST["txtEndDate"]) ? $_POST["txtEndDate"] : ""; ?>" type="date" placeholder="End Date" />
+          <input class="form-control" name="txtDescriptionNew" value="<?php echo isset($_POST["txtDescription"]) ? $_POST["txtDescription"] : ""; ?>" type="text" placeholder="Description" />
         </div>
 
         <div class="form-group">
-          <input class="form-control" name="txtStack" value="<?php echo isset($_POST["txtStack"]) ? $_POST["txtStack"] : ""; ?>" type="text" placeholder="Tech Stack" />
+          <input class="form-control" name="txtStartDateNew" value="<?php echo isset($_POST["txtStartDate"]) ? $_POST["txtStartDate"] : ""; ?>" type="date" placeholder="Start Date" />
+        </div>
+        <div class="form-group">
+          <input class="form-control" name="txtEndDateNew" value="<?php echo isset($_POST["txtEndDate"]) ? $_POST["txtEndDate"] : ""; ?>" type="date" placeholder="End Date" />
+        </div>
+
+        <div class="form-group">
+          <input class="form-control" name="txtStackNew" value="<?php echo isset($_POST["txtStack"]) ? $_POST["txtStack"] : ""; ?>" type="text" placeholder="Tech Stack" />
         </div>
 
         <div class="form-group">

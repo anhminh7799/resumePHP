@@ -24,7 +24,7 @@ td {
 
 /* For table */
 
-td .actionForm {
+td.actionForm {
     display: flex;
     flex-direction: row;
     justify-content: center;

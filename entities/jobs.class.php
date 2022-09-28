@@ -80,7 +80,7 @@ class Jobs
 
         $sql = "UPDATE `jobs` SET `title`='".$title."',`companyName`='".$companyName."',`description`='".$description."
         ',`startDate`='".$startDate."',`endDate`='".$endDate."',`idUser`='".$idUser."',`idStack`='".$idStack."' WHERE ID ='".$id."'";
-
+    
         $result = $db->query_execute($sql);
         return $result;
     }

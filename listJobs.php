@@ -20,9 +20,30 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-dark bg-dark">
+  <!-- <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Resume Content Management</a>
-  </nav>
+  </nav> -->
+  <nav class="navbar navbar-expand-lg bg-light navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="userMgt.php">Resume Content Management</a>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <ul class="navbar-nav me-auto mb-2 ml-auto mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="userMgt.php">Users</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="listJobs.php">Jobs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="reviewCV.php" >Preview</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
   <div class="container" id="main-content">
     <div class="row">
@@ -82,8 +103,8 @@
               echo "<td>" . $job['companyName'] . "</td>";
               echo "<td>" . $job['startDate'] . "</td>";
               echo "<td>" . $job['endDate'] . "</td>";
-              echo "<td class='actionForm'>";
-              echo "<form method='get' action='formJobEdit.php'><input type='hidden' name='idEdit' value=" . $job['ID'] . "> 
+              echo "<td class='actionForm' style='display: flex;justify-content: center;'>";
+              echo "<form method='get' action='formJobEdit.php' style='margin-right: 2%;'><input type='hidden' name='idEdit' value=" . $job['ID'] . "> 
                       <button type='submit' class='btn btn-success'>
                       <i class='fa fa-pencil'></i></button></form>";
               echo "<form method='post'><input type='hidden' name='id' value=" . $job['ID'] . "> 
