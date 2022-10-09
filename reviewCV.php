@@ -35,10 +35,10 @@
                         <a class="nav-link" href="userMgt.php">Users</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="listJobs.php">Jobs</a>
+                        <a class="nav-link " href="listJobs.php">Jobs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="reviewCV.php">Preview</a>
+                        <a class="nav-link active" href="reviewCV.php">Preview</a>
                     </li>
                 </ul>
             </div>
@@ -71,37 +71,103 @@
 
     <div class="container-fluid" id="main-content">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <div class="row personalInfor">
-                    <img src="./images/logo.png" alt="">
+                    <div class="col-md-12">
+                        <img src="./images/IMG_1017.JPG" alt="">
+                    </div>
                 </div>
-                <div class="row personalInfor">
-                    <?php
-                    echo "Full Name: " . $name;
-                    ?>
+                <div class="personalInforContainer">
+                    <div class="row personalInfor">
+                        <div class="col-md-12">
+                            <h4>Personal Information</h4>
+                        </div>
+                    </div>
+                    <div class="row personalInfor">
+                        <div class="col-md-12 title">Full Name</div>
+                        <div class=" col-md-12 content">
+                            <?php
+                            echo $name;
+                            ?>
+                        </div>
+                    </div>
+                    <div class="row personalInfor">
+                        <div class="col-md-12 title">Day of birth</div>
+                        <div class=" col-md-12 content">
+                            <?php
+                            echo $dob;
+                            ?>
+                        </div>
+                    </div>
+                    <div class="row personalInfor">
+                        <div class="col-md-12 title">Phone</div>
+                        <div class=" col-md-12 content">
+                            <?php
+                            echo $phone;
+                            ?>
+                        </div>
+                    </div>
+                    <div class="row personalInfor">
+                        <div class="col-md-12 title">Email</div>
+                        <div class=" col-md-12 content">
+                            <?php
+                            echo $email;
+                            ?>
+                        </div>
+                    </div>
+                    <div class="row aboutMe">
+                        <div class="col-md-12 title">
+                            <h4>About me</h4>
+                        </div>
+                        <div class="col-md-12 content">
+                            I am a web developer. I am working with ASP.NET Core as back-end and HTML, CSS, JavaScript… as well.<br>
+                            I am seeking for a professional, friendly, active environment to dedicate 100% young and passion.
+                        </div>
+                    </div>
                 </div>
-                <div class="row personalInfor">
-                    <?php
-                    echo "Day of birth: " . $dob;
-                    ?>
-                </div>
-                <div class="row personalInfor">
-                    <?php
-                    echo "Phone: " . $phone;
-                    ?>
-                </div>
-                <div class="row personalInfor">
-                    <?php
-                    echo "Email: " . $email;
-                    ?>
-                </div>
-                This is for personal information
             </div>
-            <div class="col-md-6">This is for career content</div>
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-12 workingHeading">
+                        WORKING EXPERIENCE
+                    </div>
+                </div>
+                <?php
+                require_once("./entities/jobs.class.php");
+
+                $jobs = Jobs::list_jobs();
+
+                foreach ($jobs as $job) {
+                    echo "<div class='row'>";
+                    echo "<div class='col-md-12 jobTitle'>";
+                    echo "<h4>" . $job['title'] . "</h4>";
+                    echo "</div>";
+                    echo "<div class='col-md-12 jobContent'>";
+                    echo "<div class='jobCompany'>";
+                    echo  "<h5>" . $job['companyName'] . "</h5>";
+                    echo "</div>";
+                    echo "<div class='jobPeriod'>";
+                    echo  "Start Date: " . $job['startDate'] . " <br> End Date: " . $job['endDate'];
+                    echo "</div>";
+                    echo "<div class='jobDescription'>";
+                    // for description section
+                    $jobDescription = $job['description'];
+                    if (str_contains($jobDescription, "-")) {
+                        str_replace("- ", "\n - ", $jobDescription);
+                        echo nl2br($jobDescription);
+                    } else {
+                        echo $jobDescription;
+                    }
+                    echo "</div>";
+                    echo "</div>";
+                    echo "</div>";
+                }
+                ?>
+            </div>
         </div>
     </div>
 
-    <footer class="container">
+    <footer class="container-fluid">
         <strong>&copy;2022 - NGUYEN LE ANH MINH</strong>
     </footer>
 

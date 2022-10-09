@@ -1,3 +1,75 @@
+.personalInforContainer {
+    background-color: rgb(112, 112, 112);
+    color: rgb(231, 226, 125);
+    height: 100vh;
+}
+
+.personalInforContainer h4 {
+    margin-top: 5%;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+}
+
+.personalInfor .title {
+    font-style: oblique;
+}
+
+.personalInfor .content {
+    display: flex;
+    justify-content: center;
+    font-weight: bolder;
+}
+
+
 .personalInfor {
     margin: 0 auto;
+    margin-bottom: 3%;
+}
+
+.personalInfor img {
+    display: flex;
+    margin: 0 auto;
+    margin-top: 1%;
+    height: 300px;
+}
+
+.aboutMe {
+    margin: 0 auto;
+    margin-top: 7%;
+}
+
+.aboutMe .title {
+    display: flex;
+    justify-content: center;
+    font-weight: bolder;
+}
+
+.aboutMe .content {
+    text-align: justify;
+}
+
+/* This line for the working experience section */
+.workingHeading {
+    margin-top: 1%;
+    background-color: rgb(217, 233, 78);
+    height: 5vh;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: right;
+    font-style: italic;
+}
+
+.jobCompany h5 {
+    font-weight: bold;
+}
+
+.jobTitle h4 {
+    font-weight: bolder;
+}
+
+.jobPeriod {
+    font-weight: bold;
 }

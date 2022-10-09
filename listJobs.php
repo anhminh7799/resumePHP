@@ -24,26 +24,26 @@
     <a class="navbar-brand" href="#">Resume Content Management</a>
   </nav> -->
   <nav class="navbar navbar-expand-lg bg-light navbar-dark bg-dark">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="userMgt.php">Resume Content Management</a>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <ul class="navbar-nav me-auto mb-2 ml-auto mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="userMgt.php">Users</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="listJobs.php">Jobs</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="reviewCV.php" >Preview</a>
-        </li>
-      </ul>
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="userMgt.php">Resume Content Management</a>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <ul class="navbar-nav me-auto mb-2 ml-auto mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="userMgt.php">Users</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="listJobs.php">Jobs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="reviewCV.php">Preview</a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
   <div class="container" id="main-content">
     <div class="row">
@@ -58,7 +58,7 @@
 
       <div class="col-6 no-padding">
         <a href="formJob.php" class="btn btn-success float-right">
-          <i class="fa fa-plus-square"></i> New contact
+          <i class="fa fa-plus-square"></i> New job
         </a>
       </div>
     </div>

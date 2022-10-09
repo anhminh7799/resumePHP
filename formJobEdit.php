@@ -33,7 +33,7 @@ foreach ($results as $result) {
   if ($count == 0) {
     $_POST["txtTitle"] = $result['title'];
     $_POST["txtCompany"] = $result['companyName'];
-    $_POST["txtDescription"] = $result['companyName'];
+    $_POST["txtDescription"] = $result['description'];
     $_POST["txtStartDate"] = $result["startDate"];
     $_POST["txtEndDate"] = $result["endDate"];
     $_POST["txtStack"] = $result["idStack"];
@@ -83,10 +83,6 @@ if (isset($_POST["btnSubmit"])) {
         </div>
 
         <div class="form-group">
-          <input class="form-control" name="txtDescriptionNew" value="<?php echo isset($_POST["txtDescription"]) ? $_POST["txtDescription"] : ""; ?>" type="text" placeholder="Description" />
-        </div>
-
-        <div class="form-group">
           <input class="form-control" name="txtStartDateNew" value="<?php echo isset($_POST["txtStartDate"]) ? $_POST["txtStartDate"] : ""; ?>" type="date" placeholder="Start Date" />
         </div>
         <div class="form-group">
@@ -95,6 +91,9 @@ if (isset($_POST["btnSubmit"])) {
 
         <div class="form-group">
           <input class="form-control" name="txtStackNew" value="<?php echo isset($_POST["txtStack"]) ? $_POST["txtStack"] : ""; ?>" type="text" placeholder="Tech Stack" />
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" rows="3" name="txtDescriptionNew" type="text" placeholder="Description"><?php echo isset($_POST["txtDescription"]) ? $_POST["txtDescription"] : ""; ?></textarea>
         </div>
 
         <div class="form-group">
