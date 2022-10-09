@@ -138,7 +138,7 @@
                 $jobs = Jobs::list_jobs();
 
                 foreach ($jobs as $job) {
-                    echo "<div class='row'>";
+                    echo "<div class='row jobContainer'>";
                     echo "<div class='col-md-12 jobTitle'>";
                     echo "<h4>" . $job['title'] . "</h4>";
                     echo "</div>";
